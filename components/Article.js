@@ -1,4 +1,4 @@
-import data from '../data/Articles';
+import data from '../data/ArticleData';
 
 let container = document.querySelector('.articles');
 

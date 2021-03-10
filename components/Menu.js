@@ -1,33 +1,33 @@
-// This is the data we will be using, study it but don't change anything, yet.
+import menuItems from '../data/MenuData';
 
-let menuItems = [
-  'Students',
-  'Faculty',
-  "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
-];
 
-/* 
-  Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
+function menuMaker(items){
+  let menuButton = document.querySelector('.menu-button');
+  let dynamicClass = 'menu--open';
+  let child;
 
-  <div class="menu">
-    <ul>
-      {each menu item as an <li>}
-    </ul>
-  </div>
+  let menu = document.createElement('div');
+  menu.classList.add('menu');
 
-  The 'menuMaker' takes an array of menu items as its only argument.
+  let container = document.createElement('ul');
+  menu.appendChild(container);
 
-  Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array.
-  Add those items to the <ul>
+  items.forEach(i => {
+    child = document.createElement('li');
+    child.innerText = i;
+    container.appendChild(child);
+  });
 
-  Step 3: Still inside your function, select from the DOM the menu button (the element with a class of 'menu-button').
+  menuButton.addEventListener('click', e => {
+    e.preventDefault();
 
-  Step 4: Add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on div.menu (your div with a 'menu' class).
+    menu.classList.contains(dynamicClass) ?
+      menu.classList.remove(dynamicClass)
+      : menu.classList.add(dynamicClass);
+  });
 
-  Step 5: Don't forget to return your div.menu.
+  return menu;
+};
 
-  Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
-*/
+let header = document.querySelector('.header');
+header.appendChild(menuMaker(menuItems));
