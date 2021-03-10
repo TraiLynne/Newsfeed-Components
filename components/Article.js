@@ -119,7 +119,6 @@ let container = document.querySelector('.articles');
 function articleMaker(article){
   let newArticle = document.createElement('div');
   newArticle.classList.add('article');
-  newArticle.classList.add('article-open');
 
   let title = document.createElement('h2');
   title.innerText = article.title;
@@ -155,6 +154,10 @@ function articleMaker(article){
   });
   newArticle.appendChild(span);
 
-  // console.log(newArticle);
   return newArticle;
 }
+
+
+data.forEach(a => {
+  container.appendChild(articleMaker(a));
+});
