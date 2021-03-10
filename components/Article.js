@@ -144,6 +144,15 @@ function articleMaker(article){
 
   let span = document.createElement('span');
   span.classList.add('expandButton');
+  span.addEventListener('click', e => {
+    e.preventDefault()
+
+    let parent = e.target.parentElement
+
+    parent.classList.contains('article-open') ?
+      e.path[1].classList.remove('article-open')
+      : e.path[1].classList.add('article-open');
+  });
   newArticle.appendChild(span);
 
   // console.log(newArticle);
